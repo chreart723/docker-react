@@ -1,0 +1,9 @@
+sudo: required 
+services:
+  - docker
+# realistically can tag as anything because we are just testing but otherwise for real conventions
+before_install:
+  - docker build -t chreart723/docker-react -f Dockerfile.dev .  
+
+script:
+  - docker run -e CI=true chreart723/docker-react npm run test 
